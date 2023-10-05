@@ -2,12 +2,12 @@
 
 * {
   font-family: 'Jost';
+  box-sizing: border-box;
 }
 
 body {
   margin: 0 auto;
   font-family: 'Jost', sans-serif;
-  box-sizing: border-box;
   max-width: 1200px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
