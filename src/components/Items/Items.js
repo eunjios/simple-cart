@@ -1,6 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import Item from './Item';
-import { itemsUl, itemsLi } from '../../styles/item-style';
+import {
+  itemsContainer,
+  itemsUl,
+  itemsLi,
+} from '../../styles/item-style';
 
 const Items = (props) => {
   const items = props.ITEMS.map((item) => (
@@ -15,7 +19,7 @@ const Items = (props) => {
     </li>
   ));
   return (
-    <div>
+    <div css={itemsContainer}>
       <ul css={itemsUl}>{items}</ul>
     </div>
   );

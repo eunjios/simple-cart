@@ -23,6 +23,11 @@ export const addButton = css`
   width: 100%;
 `;
 
+export const itemsContainer = css`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
 export const itemsUl = css`
   display: flex;
   flex-wrap: wrap;
