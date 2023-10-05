@@ -5,7 +5,7 @@ import {
   img,
   container,
   amountStyle,
-  totalPriceStyle,
+  itemPriceStyle,
   itemInfo,
 } from '../../styles/cart-style';
 
@@ -43,7 +43,7 @@ const CartItem = (props) => {
           />
         </span>
       </div>
-      <div css={[container, totalPriceStyle]}>
+      <div css={[container, itemPriceStyle]}>
         <span>상품 금액</span>
         <span>{totalPriceOfItem}</span>
       </div>

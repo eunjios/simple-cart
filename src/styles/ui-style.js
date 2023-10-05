@@ -6,7 +6,6 @@ export const button = css`
   border: 1px solid #c05850;
   border-radius: 32px;
   padding: 8px;
-  font-family: jost;
   margin: 8px 0;
   cursor: pointer;
 
@@ -66,4 +65,14 @@ export const modal = css`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
+`;
+
+export const badge = css`
+  display: inline-flex;
+  padding: 1px 4px;
+  background: #c05850;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 8px;
+  font-weight: 600;
 `;

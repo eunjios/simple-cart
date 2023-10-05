@@ -16,14 +16,7 @@ export const button = css`
   cursor: pointer;
 `;
 
-export const badge = css`
-  display: inline-flex;
-  padding: 1px 4px;
-  background: #c05850;
-  border-radius: 8px;
-  color: #fff;
-  font-size: 8px;
-  font-weight: 600;
+export const cartBadgePosition = css`
   position: relative;
   top: -16px;
   right: 8px;
