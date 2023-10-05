@@ -12,6 +12,8 @@ export const button = css`
   font-size: 24px;
   color: #d4d4d4;
   padding: 0;
+  margin: 0 0 0 4px;
+  cursor: pointer;
 `;
 
 export const badge = css`
