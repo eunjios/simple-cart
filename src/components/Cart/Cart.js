@@ -1,21 +1,24 @@
 /** @jsxImportSource @emotion/react */
 import Modal from '../UI/Modal';
 import CartItem from './CartItem';
-import { ITEMS } from '../../store/data';
 import CartTotal from './CartTotal';
+import { useContext } from 'react';
+import CartContext from '../../store/cart-context';
 
 const Cart = (props) => {
+  const cartCtx = useContext(CartContext);
+
   const orderHandler = () => {
     // TODO: 서버에 보내기
     props.onClose(); // 모달창 닫기
   };
-  const cartItems = ITEMS.map((item) => (
-    <li>
+
+  const cartItems = cartCtx.items.map((item) => (
+    <li key={item.id}>
       <CartItem
-        key={item.id}
         title={item.title}
         price={item.price}
-        amount="1"
+        amount={item.amount}
         src={item.imageUrl}
       />
     </li>
@@ -23,7 +26,7 @@ const Cart = (props) => {
 
   return (
     <Modal onClose={props.onClose}>
-      {/* <ul>{cartItems}</ul> */}
+      <ul>{cartItems}</ul>
       <CartTotal onOrder={orderHandler} />
     </Modal>
   );

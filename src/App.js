@@ -3,6 +3,7 @@ import Items from './components/Items/Items';
 import Header from './components/Layout/Header';
 import { ITEMS } from './store/data';
 import Cart from './components/Cart/Cart';
+import CartProvider from './store/CartProvider';
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(true);
@@ -16,11 +17,11 @@ function App() {
   };
 
   return (
-    <div>
+    <CartProvider>
       {isCartOpen && <Cart onClose={closeCartModal} />}
       <Header onOpen={openCartModal} />
       <Items ITEMS={ITEMS} />
-    </div>
+    </CartProvider>
   );
 }
 

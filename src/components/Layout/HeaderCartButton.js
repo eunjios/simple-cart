@@ -5,12 +5,21 @@ import {
   button,
 } from '../../styles/layout-style';
 import { badge } from '../../styles/ui-style';
+import { useContext } from 'react';
+import CartContext from '../../store/cart-context';
 
 const HeaderCartButton = (props) => {
+  const cartCtx = useContext(CartContext);
+  const { totalAmount } = cartCtx;
+
   return (
     <button css={button} onClick={props.onClick}>
       <AiFillShopping />
-      <span css={[badge, cartBadgePosition]}>22</span>
+      {totalAmount > 0 && (
+        <span css={[badge, cartBadgePosition]}>
+          {totalAmount}
+        </span>
+      )}
     </button>
   );
 };

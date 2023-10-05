@@ -5,11 +5,15 @@ import { BiPlus, BiMinus } from 'react-icons/bi';
 const AmountInput = (props) => {
   return (
     <div css={input}>
-      <button>
+      <button type="button" onClick={props.onMinus}>
         <BiMinus />
       </button>
-      <input {...props.input} />
-      <button>
+      <input
+        type="button"
+        onChange={props.onChange}
+        {...props.input}
+      />
+      <button onClick={props.onPlus}>
         <BiPlus />
       </button>
     </div>

@@ -1,15 +1,20 @@
 /** @jsxImportSource @emotion/react */
+import { useContext } from 'react';
 import {
   totalPriceContainer,
   wideBtn,
   orderBadgePosition,
 } from '../../styles/cart-style';
 import { button, badge } from '../../styles/ui-style';
+import CartContext from '../../store/cart-context';
 
 const CartTotal = (props) => {
-  // const total = `${props.total.toLocaleString('ko-KO')}원`;
-  const total = '13,000원';
-  const amount = 22;
+  const cartCtx = useContext(CartContext);
+
+  const total = `${cartCtx.totalPrice.toLocaleString(
+    'ko-KO'
+  )}원`;
+  const amount = cartCtx.totalAmount;
 
   return (
     <div css={totalPriceContainer}>

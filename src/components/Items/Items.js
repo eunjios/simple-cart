@@ -10,6 +10,7 @@ const Items = (props) => {
   const items = props.ITEMS.map((item) => (
     <li key={item.id} css={itemsLi}>
       <Item
+        id={item.id}
         title={item.title}
         price={item.price}
         rating={item.rating}
