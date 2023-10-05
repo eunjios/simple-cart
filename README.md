@@ -8,6 +8,9 @@
 
 > context와 useState를 적절히 활용하여 state를 관리하는 프로젝트
 
+<img width="512" alt="preview" src="https://github.com/eunjios/simple-cart/assets/77034159/117ae09f-bd4b-457f-940d-faeb864bb524">
+<img width="512" alt="preview" src="https://github.com/eunjios/simple-cart/assets/77034159/9ca728a4-a6cc-4885-915f-a5365d7670a5">
+
 ### Goals
 
 1. useState, useEffect, useContext 등 다양한 훅을 사용한 상태 관리
