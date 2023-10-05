@@ -4,6 +4,7 @@ import CartItem from './CartItem';
 import CartTotal from './CartTotal';
 import { useContext } from 'react';
 import CartContext from '../../store/cart-context';
+import { cartLi, cartUl } from '../../styles/cart-style';
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
@@ -14,7 +15,7 @@ const Cart = (props) => {
   };
 
   const cartItems = cartCtx.items.map((item) => (
-    <li key={item.id}>
+    <li key={item.id} css={cartLi}>
       <CartItem
         title={item.title}
         price={item.price}
@@ -26,7 +27,7 @@ const Cart = (props) => {
 
   return (
     <Modal onClose={props.onClose}>
-      <ul>{cartItems}</ul>
+      <ul css={cartUl}>{cartItems}</ul>
       <CartTotal onOrder={orderHandler} />
     </Modal>
   );

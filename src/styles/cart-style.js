@@ -57,3 +57,14 @@ export const orderBadgePosition = css`
   top: -2px;
   right: -8px;
 `;
+
+export const cartUl = css`
+  padding: 0;
+  margin: 0;
+  list-style: none;
+`;
+
+export const cartLi = css`
+  padding: 0;
+  margin: 0;
+`;
