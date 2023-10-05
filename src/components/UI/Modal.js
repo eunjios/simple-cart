@@ -2,7 +2,7 @@
 import { backdrop, modal } from '../../styles/ui-style';
 
 const Backdrop = (props) => {
-  return <div css={backdrop} />;
+  return <div css={backdrop} onClick={props.onClick} />;
 };
 
 const ModalOverlay = (props) => {
@@ -12,7 +12,7 @@ const ModalOverlay = (props) => {
 const Modal = (props) => {
   return (
     <>
-      <Backdrop />
+      <Backdrop onClick={props.onClose} />
       <ModalOverlay>{props.children}</ModalOverlay>
     </>
   );

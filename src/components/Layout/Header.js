@@ -3,12 +3,12 @@ import { header } from '../../styles/layout-style';
 import HeaderCartButton from './HeaderCartButton';
 import HeaderUserButton from './HeaderUserButton';
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header css={header}>
       <h2>analogue keeper</h2>
       <div>
-        <HeaderCartButton />
+        <HeaderCartButton onClick={props.onOpen} />
         <HeaderUserButton />
       </div>
     </header>

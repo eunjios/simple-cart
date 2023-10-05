@@ -1,24 +1,24 @@
-import CartItem from './components/Cart/CartItem';
+import React, { useState } from 'react';
 import Items from './components/Items/Items';
 import Header from './components/Layout/Header';
-import Modal from './components/UI/Modal';
 import { ITEMS } from './store/data';
+import Cart from './components/Cart/Cart';
 
 function App() {
+  const [isCartOpen, setIsCartOpen] = useState(true);
+
+  const openCartModal = () => {
+    setIsCartOpen(true);
+  };
+
+  const closeCartModal = () => {
+    setIsCartOpen(false);
+  };
+
   return (
     <div>
-      <Modal>
-        {ITEMS.map((item) => (
-          <CartItem
-            key={item.id}
-            title={item.title}
-            price={item.price}
-            amount="1"
-            src={item.imageUrl}
-          />
-        ))}
-      </Modal>
-      <Header />
+      {isCartOpen && <Cart onClose={closeCartModal} />}
+      <Header onOpen={openCartModal} />
       <Items ITEMS={ITEMS} />
     </div>
   );

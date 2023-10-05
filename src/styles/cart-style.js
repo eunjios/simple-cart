@@ -31,8 +31,29 @@ export const amountStyle = css`
   padding: 12px 16px;
 `;
 
-export const totalPriceStyle = css`
-  background-color: transparent;
+export const itemPriceStyle = css`
+  background: transparent;
   padding: 8px;
   font-weight: 600;
+`;
+
+export const totalPriceContainer = css`
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+
+  & p {
+    font-size: 14px;
+  }
+`;
+
+export const wideBtn = css`
+  width: 160px;
+  font-weight: 600;
+`;
+
+export const orderBadgePosition = css`
+  position: relative;
+  top: -2px;
+  right: -8px;
 `;

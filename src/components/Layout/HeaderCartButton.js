@@ -1,12 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import { AiFillShopping } from 'react-icons/ai';
-import { badge, button } from '../../styles/layout-style';
+import {
+  cartBadgePosition,
+  button,
+} from '../../styles/layout-style';
+import { badge } from '../../styles/ui-style';
 
-const HeaderCartButton = () => {
+const HeaderCartButton = (props) => {
   return (
-    <button css={button}>
+    <button css={button} onClick={props.onClick}>
       <AiFillShopping />
-      <span css={badge}>22</span>
+      <span css={[badge, cartBadgePosition]}>22</span>
     </button>
   );
 };
