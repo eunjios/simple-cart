@@ -23,6 +23,7 @@ export const input = css`
   gap: 8px;
 
   & input {
+    background: transparent;
     flex-grow: 1;
     text-align: center;
     border: 0px;
