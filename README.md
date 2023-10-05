@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# 🛒 장바구니 만들기
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![React](https://img.shields.io/badge/React-424242?style=flat-square&logo=react)
+![JavaScript](https://img.shields.io/badge/JavaScript-424242?style=flat-square&logo=JavaScript&logoColor=)
+![CSS](https://img.shields.io/badge/👩‍🎤%20Emotion-424242?style=flat-square)
 
-## Available Scripts
+## 👀 About
 
-In the project directory, you can run:
+> context와 useState를 적절히 활용하여 state를 관리하는 프로젝트
 
-### `yarn start`
+### Goals
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. useState, useEffect, useContext 등 다양한 훅을 사용한 상태 관리
+2. 이해하기 쉬운 디렉토리 구조 설계
+3. 스타일링과 렌더링 로직 적절히 분리하기
+4. 재사용성을 고려한 코드
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Built with
 
-### `yarn test`
+- React
+- JavaScript
+- Emotion
+- React Icons
+- yarn
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🔍 Features
 
-### `yarn build`
+## 🚀 Troubleshooting
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### 1. 이벤트 중복 발생 이슈
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**문제 상황**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- submit button이 아님에도 submitHandler가 작동하는 문제 발생
 
-### `yarn eject`
+**문제 해결**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- props로 받은 함수의 포인터를 그대로 사용하는 것이 아닌 컴포넌트에 새로운 핸들러 함수를 정의하고 event를 인자로 받아서 해결
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 👩🏻‍💻 Todos
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [ x ] 컴포넌트 구현
+- [ x ] 컨텍스트 및 리듀서 구현
+- [ x ] 상품 장바구니에 추가하는 기능
+- [ ] 상품 장바구니에서 삭제하는 기능
+- [ ] 상품 장바구니에서 수정하는 기능
+- [ ] alert 창 추가
