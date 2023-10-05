@@ -20,19 +20,23 @@ export const button = css`
 export const input = css`
   display: flex;
   justify-content: space-between;
-  gap: 8px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e2e2e2;
+  overflow: hidden;
 
   & input {
     background: transparent;
     flex-grow: 1;
     text-align: center;
-    border: 0px;
+    border: none;
     font-family: jost;
+    font-weight: 600;
   }
 
   & button {
     background: transparent;
-    border: 0px;
+    border: none;
     cursor: pointer;
   }
 
