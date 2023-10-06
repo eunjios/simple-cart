@@ -56,7 +56,7 @@ export const backdrop = css`
 
 export const modal = css`
   position: fixed;
-  top: 20vh;
+  top: 15vh;
   left: 10%;
   width: 80%;
   background-color: #fff;
@@ -64,7 +64,30 @@ export const modal = css`
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
-  animation: slide-down 300ms ease-out forwards;
+  animation: slide-up 300ms ease-out forwards;
+
+  @media (max-width: 480px) {
+    top: 10vh;
+    left: 5%;
+    width: 90%;
+    height: 80vh;
+  }
+
+  @media (max-height: 560px) {
+    top: 10vh;
+    height: 80vh;
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 
 export const badge = css`
