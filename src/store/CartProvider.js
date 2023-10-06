@@ -9,7 +9,7 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case 'ADD':
+    case 'ADD': {
       // items 업데이트
       const selectedItemIndex = state.items.findIndex(
         (item) => item.id === action.item.id
@@ -38,7 +38,7 @@ const cartReducer = (state, action) => {
         (acc, item) => {
           return acc + item.amount;
         },
-        action.item.amount // TODO: 고치기
+        action.item.amount
       );
 
       return {
@@ -46,8 +46,35 @@ const cartReducer = (state, action) => {
         totalPrice: updatedTotalPrice,
         totalAmount: updatedTotalAmount,
       };
-    case 'REMOVE':
-      return defaultCartState;
+    }
+    case 'REMOVE': {
+      const selectedItemIndex = state.items.findIndex(
+        (item) => item.id === action.id
+      );
+      const selectedItem = state.items[selectedItemIndex];
+      let updatedItems = [];
+      if (selectedItem.amount > 1) {
+        const updatedItem = {
+          ...selectedItem,
+          amount: selectedItem.amount - 1,
+        };
+        updatedItems = [...state.items];
+        updatedItems[selectedItemIndex] = updatedItem;
+      } else {
+        updatedItems = state.items.filter(
+          (item) => item.id !== action.id
+        );
+      }
+
+      const updatedTotalPrice =
+        state.totalPrice - selectedItem.price;
+
+      return {
+        items: updatedItems,
+        totalPrice: updatedTotalPrice,
+        totalAmount: state.totalAmount - 1,
+      };
+    }
     default:
       return defaultCartState;
   }

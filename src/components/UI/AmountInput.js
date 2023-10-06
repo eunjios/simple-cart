@@ -15,11 +15,10 @@ const AmountInput = (props) => {
 
   return (
     <div css={input}>
-      <button type="button" onClick={minusClickHandler}>
+      <button onClick={minusClickHandler}>
         <BiMinus />
       </button>
       <input
-        type="button"
         onChange={props.onChange}
         readOnly={props.input.readOnly}
         {...props.input}

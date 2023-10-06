@@ -28,14 +28,14 @@ const CartItem = (props) => {
     imageUrl: props.src,
   };
 
+  console.log('currentItem.id:', currentItem.id);
+
   const plusOrderAmountHandler = () => {
     if (currentItem.amount >= 10) return;
     cartCtx.addItem({ ...currentItem, amount: 1 });
-    console.log(cartCtx.items);
   };
 
   const minusOrderAmountHandler = () => {
-    if (currentItem.amount <= 1) return;
     cartCtx.removeItem(currentItem.id);
   };
 
