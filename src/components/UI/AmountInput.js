@@ -21,6 +21,7 @@ const AmountInput = (props) => {
       <input
         type="button"
         onChange={props.onChange}
+        readOnly={props.input.readOnly}
         {...props.input}
       />
       <button onClick={plusClickHandler}>

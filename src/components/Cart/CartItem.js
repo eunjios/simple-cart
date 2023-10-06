@@ -8,13 +8,37 @@ import {
   itemPriceStyle,
   itemInfo,
 } from '../../styles/cart-style';
+import { useContext } from 'react';
+import CartContext from '../../store/cart-context';
 
 const CartItem = (props) => {
+  const cartCtx = useContext(CartContext);
+
   const price = `${props.price.toLocaleString('ko-KO')}원`;
   const amount = `상품 주문 수량: ${props.amount}개`;
   const totalPriceOfItem = `${(
     props.price * props.amount
   ).toLocaleString('ko-KO')}원`;
+
+  const currentItem = {
+    id: props.id,
+    title: props.title,
+    price: props.price,
+    amount: props.amount,
+    imageUrl: props.src,
+  };
+
+  const plusOrderAmountHandler = () => {
+    if (currentItem.amount >= 10) return;
+    cartCtx.addItem({ ...currentItem, amount: 1 });
+    console.log(cartCtx.items);
+  };
+
+  const minusOrderAmountHandler = () => {
+    if (currentItem.amount <= 1) return;
+    cartCtx.removeItem(currentItem.id);
+  };
+
   return (
     <div css={cartItem}>
       <div css={itemInfo}>
@@ -34,11 +58,14 @@ const CartItem = (props) => {
         <span>{amount}</span>
         <span>
           <AmountInput
+            onPlus={plusOrderAmountHandler}
+            onMinus={minusOrderAmountHandler}
             input={{
               type: 'number',
+              value: currentItem.amount,
               min: '1',
               max: '10',
-              defaultValue: '1',
+              readOnly: true,
             }}
           />
         </span>

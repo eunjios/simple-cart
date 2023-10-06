@@ -26,7 +26,6 @@ const ItemForm = (props) => {
           value: props.value,
           min: '1',
           max: '10',
-          defaultValue: '1',
         }}
       />
       <button css={[button, addButton]} type="submit">
