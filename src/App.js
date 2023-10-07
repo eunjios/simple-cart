@@ -6,7 +6,7 @@ import Cart from './components/Cart/Cart';
 import CartProvider from './store/CartProvider';
 
 function App() {
-  const [isCartOpen, setIsCartOpen] = useState(true);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const openCartModal = () => {
     setIsCartOpen(true);

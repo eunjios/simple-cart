@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import ReactDOM from 'react-dom';
 import { backdrop, modal } from '../../styles/ui-style';
 
 const Backdrop = (props) => {
@@ -9,11 +10,19 @@ const ModalOverlay = (props) => {
   return <div css={modal}>{props.children}</div>;
 };
 
+const portalElement = document.getElementById('overlays');
+
 const Modal = (props) => {
   return (
     <>
-      <Backdrop onClick={props.onClose} />
-      <ModalOverlay>{props.children}</ModalOverlay>
+      {ReactDOM.createPortal(
+        <Backdrop onClick={props.onClose} />,
+        portalElement
+      )}
+      {ReactDOM.createPortal(
+        <ModalOverlay>{props.children}</ModalOverlay>,
+        portalElement
+      )}
     </>
   );
 };
