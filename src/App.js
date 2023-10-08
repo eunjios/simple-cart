@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import Items from './components/Items/Items';
 import Header from './components/Layout/Header';
 import { ITEMS } from './store/data';
@@ -16,11 +16,13 @@ function App() {
     setIsCartOpen(false);
   };
 
+  const items = useMemo(() => ITEMS, []);
+
   return (
     <CartProvider>
       {isCartOpen && <Cart onClose={closeCartModal} />}
       <Header onOpen={openCartModal} />
-      <Items ITEMS={ITEMS} />
+      <Items ITEMS={items} />
     </CartProvider>
   );
 }

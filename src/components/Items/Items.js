@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import React from 'react';
 import Item from './Item';
 import {
   itemsContainer,
@@ -26,4 +27,4 @@ const Items = (props) => {
   );
 };
 
-export default Items;
+export default React.memo(Items);
