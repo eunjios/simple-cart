@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import React from 'react';
 import { header } from '../../styles/layout-style';
 import HeaderCartButton from './HeaderCartButton';
 import HeaderUserButton from './HeaderUserButton';
@@ -15,4 +16,4 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

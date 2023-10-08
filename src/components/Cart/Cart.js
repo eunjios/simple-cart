@@ -2,7 +2,7 @@
 import Modal from '../UI/Modal';
 import CartItem from './CartItem';
 import CartTotal from './CartTotal';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import CartContext from '../../store/cart-context';
 import {
   cartLi,
@@ -48,4 +48,4 @@ const Cart = (props) => {
   );
 };
 
-export default Cart;
+export default React.memo(Cart);

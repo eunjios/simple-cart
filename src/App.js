@@ -1,4 +1,8 @@
-import React, { useMemo, useState } from 'react';
+import React, {
+  useCallback,
+  useMemo,
+  useState,
+} from 'react';
 import Items from './components/Items/Items';
 import Header from './components/Layout/Header';
 import { ITEMS } from './store/data';
@@ -8,13 +12,13 @@ import CartProvider from './store/CartProvider';
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const openCartModal = () => {
+  const openCartModal = useCallback(() => {
     setIsCartOpen(true);
-  };
+  }, []);
 
-  const closeCartModal = () => {
+  const closeCartModal = useCallback(() => {
     setIsCartOpen(false);
-  };
+  }, []);
 
   const items = useMemo(() => ITEMS, []);
 

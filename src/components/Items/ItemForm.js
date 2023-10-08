@@ -11,8 +11,6 @@ const ItemForm = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     cartCtx.addItem(props.item);
-    console.log(props.item);
-    console.log(cartCtx.items);
   };
 
   return (

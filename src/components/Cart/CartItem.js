@@ -28,8 +28,6 @@ const CartItem = (props) => {
     imageUrl: props.src,
   };
 
-  console.log('currentItem.id:', currentItem.id);
-
   const plusOrderAmountHandler = () => {
     if (currentItem.amount >= 10) return;
     cartCtx.addItem({ ...currentItem, amount: 1 });
