@@ -42,6 +42,7 @@ const cartReducer = (state, action) => {
       );
 
       return {
+        ...state,
         items: updatedItems,
         totalPrice: updatedTotalPrice,
         totalAmount: updatedTotalAmount,
@@ -70,10 +71,14 @@ const cartReducer = (state, action) => {
         state.totalPrice - selectedItem.price;
 
       return {
+        ...state,
         items: updatedItems,
         totalPrice: updatedTotalPrice,
         totalAmount: state.totalAmount - 1,
       };
+    }
+    case 'RESET': {
+      return defaultCartState;
     }
     default:
       return defaultCartState;
@@ -94,12 +99,19 @@ const CartProvider = (props) => {
     dispatchCart({ type: 'REMOVE', id: id });
   };
 
+  const resetCartHandler = () => {
+    dispatchCart({ type: 'RESET' });
+  };
+
   const cartContext = {
     items: cartState.items,
     totalPrice: cartState.totalPrice,
     totalAmount: cartState.totalAmount,
+    user: cartState.user,
+    formIsValid: cartState.formIsValid,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
+    resetCart: resetCartHandler,
   };
 
   return (
