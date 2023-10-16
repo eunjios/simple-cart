@@ -140,3 +140,12 @@ export const closeBtn = css`
     }
   }
 `;
+
+export const emptyContainer = css`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+`;

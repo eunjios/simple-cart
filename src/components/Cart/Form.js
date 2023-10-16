@@ -6,6 +6,7 @@ import {
   formContainer,
   inputContainer,
   inputStyle,
+  inputsContainer,
   labelStyle,
   narrow,
   wide,
@@ -18,7 +19,8 @@ const Form = (props) => {
   const total = `${totalPrice.toLocaleString('ko-KO')}원`;
 
   const nameRegEx = /^[가-힣]{2,4}$/;
-  const telRegEx = /^\d{2,4}$/;
+  const tel1RegEx = /^\d{2,3}$/;
+  const tel2RegEx = /^\d{3,4}$/;
   const addressRegEx = /.+/;
 
   const {
@@ -39,7 +41,7 @@ const Form = (props) => {
     inputChangeHandler: tel1ChangeHandler,
     inputBlurHandler: tel1BlurHandler,
     reset: tel1Reset,
-  } = useForm(telRegEx);
+  } = useForm(tel1RegEx);
 
   const {
     isRequired: tel2IsRequired,
@@ -50,7 +52,7 @@ const Form = (props) => {
     inputChangeHandler: tel2ChangeHandler,
     inputBlurHandler: tel2BlurHandler,
     reset: tel2Reset,
-  } = useForm(telRegEx);
+  } = useForm(tel2RegEx);
 
   const {
     isRequired: tel3IsRequired,
@@ -61,7 +63,7 @@ const Form = (props) => {
     inputChangeHandler: tel3ChangeHandler,
     inputBlurHandler: tel3BlurHandler,
     reset: tel3Reset,
-  } = useForm(telRegEx);
+  } = useForm(tel2RegEx);
 
   const {
     isRequired: addressIsRequired,
@@ -124,96 +126,101 @@ const Form = (props) => {
   return (
     <form css={formContainer} onSubmit={formSubmitHandler}>
       {/* 이름, 연락처, 배송지 주소, 배송 메모 */}
-      <div css={inputContainer}>
-        <strong css={labelStyle(nameIsRequired)}>
-          name
-        </strong>
-        <input
-          css={[inputStyle]}
-          name="name"
-          type="text"
-          value={enteredName}
-          onChange={nameChangeHandler}
-          onBlur={nameBlurHandler}
-          required={nameIsRequired}
-        />
-      </div>
-      <div css={inputContainer}>
-        <strong css={labelStyle(tel1IsRequired)}>
-          phone
-        </strong>
-        <div>
+      <div css={inputsContainer}>
+        <div css={inputContainer}>
+          <strong css={labelStyle(nameIsRequired)}>
+            name
+          </strong>
           <input
-            css={[inputStyle, narrow]}
-            name="tel.1"
+            css={[inputStyle(nameIsInvalidUI)]}
+            name="name"
             type="text"
-            value={enteredTel1}
-            onChange={tel1ChangeHandler}
-            onBlur={tel1BlurHandler}
-            inputMode="numeric"
-            maxLength="4"
-            required={tel1IsRequired}
-          />
-          <span>-</span>
-          <input
-            css={[inputStyle, narrow]}
-            name="tel.2"
-            type="text"
-            value={enteredTel2}
-            onChange={tel2ChangeHandler}
-            onBlur={tel2BlurHandler}
-            inputMode="numeric"
-            maxLength="4"
-            required={tel2IsRequired}
-          />
-          <span>-</span>
-          <input
-            css={[inputStyle, narrow]}
-            name="tel.3"
-            type="text"
-            value={enteredTel3}
-            onChange={tel3ChangeHandler}
-            onBlur={tel3BlurHandler}
-            inputMode="numeric"
-            maxLength="4"
-            required={tel3IsRequired}
+            value={enteredName}
+            onChange={nameChangeHandler}
+            onBlur={nameBlurHandler}
+            required={nameIsRequired}
           />
         </div>
-      </div>
-      <div css={inputContainer}>
-        <strong css={labelStyle(addressIsRequired)}>
-          address
-        </strong>
-        <input
-          css={[inputStyle, wide]}
-          name="address"
-          type="text"
-          value={enteredAddress}
-          onChange={addressChangeHandler}
-          onBlur={addressBlurHandler}
-          required={addressIsRequired}
-        />
-      </div>
-      <div css={inputContainer}>
-        <strong css={labelStyle(memoIsRequired)}>
-          delivery memo
-        </strong>
-        <input
-          css={[inputStyle, wide]}
-          name="memo"
-          type="text"
-          value={enteredMemo}
-          onChange={memoChangeHandler}
-          onBlur={memoBlurHandler}
-          required={memoIsRequired}
-        />
+        <div css={inputContainer}>
+          <strong css={labelStyle(tel1IsRequired)}>
+            phone
+          </strong>
+          <div>
+            <input
+              css={[inputStyle(tel1IsInvalidUI), narrow]}
+              name="tel.1"
+              type="text"
+              value={enteredTel1}
+              onChange={tel1ChangeHandler}
+              onBlur={tel1BlurHandler}
+              inputMode="numeric"
+              maxLength="4"
+              required={tel1IsRequired}
+            />
+            <span>-</span>
+            <input
+              css={[inputStyle(tel2IsInvalidUI), narrow]}
+              name="tel.2"
+              type="text"
+              value={enteredTel2}
+              onChange={tel2ChangeHandler}
+              onBlur={tel2BlurHandler}
+              inputMode="numeric"
+              maxLength="4"
+              required={tel2IsRequired}
+            />
+            <span>-</span>
+            <input
+              css={[inputStyle(tel3IsInvalidUI), narrow]}
+              name="tel.3"
+              type="text"
+              value={enteredTel3}
+              onChange={tel3ChangeHandler}
+              onBlur={tel3BlurHandler}
+              inputMode="numeric"
+              maxLength="4"
+              required={tel3IsRequired}
+            />
+          </div>
+        </div>
+        <div css={inputContainer}>
+          <strong css={labelStyle(addressIsRequired)}>
+            address
+          </strong>
+          <input
+            css={[inputStyle(addressIsInvalidUI), wide]}
+            name="address"
+            type="text"
+            value={enteredAddress}
+            onChange={addressChangeHandler}
+            onBlur={addressBlurHandler}
+            required={addressIsRequired}
+          />
+        </div>
+        <div css={inputContainer}>
+          <strong css={labelStyle(memoIsRequired)}>
+            delivery memo
+          </strong>
+          <input
+            css={[inputStyle(memoIsInvalidUI), wide]}
+            name="memo"
+            type="text"
+            value={enteredMemo}
+            onChange={memoChangeHandler}
+            onBlur={memoBlurHandler}
+            required={memoIsRequired}
+          />
+        </div>
       </div>
       <div css={actionsContainer}>
         <div>
           <p>총 주문금액</p>
           <h3>{total}</h3>
         </div>
-        <OrderButton onPrev={props.onPrev} />
+        <OrderButton
+          onPrev={props.onPrev}
+          formIsValid={formIsValid}
+        />
       </div>
     </form>
   );

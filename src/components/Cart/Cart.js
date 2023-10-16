@@ -12,6 +12,7 @@ import {
 import { AiOutlineClose } from 'react-icons/ai';
 import Form from './Form';
 import axios from 'axios';
+import EmptyCart from './EmptyCart';
 
 const Cart = (props) => {
   const { items } = useContext(CartContext);
@@ -58,7 +59,7 @@ const Cart = (props) => {
     </li>
   ));
 
-  const content =
+  let content =
     page === 1 ? (
       <>
         <ul css={cartUl}>{cartItems}</ul>
@@ -70,6 +71,9 @@ const Cart = (props) => {
         onPrev={prevPageHandler}
       />
     );
+  if (items.length === 0) {
+    content = <EmptyCart onClose={props.onClose} />;
+  }
 
   return (
     <Modal onClose={props.onClose}>
