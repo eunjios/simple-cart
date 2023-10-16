@@ -6,7 +6,7 @@ export const formContainer = css`
 `;
 
 export const inputsContainer = css`
-  max-height: 40%;
+  max-height: 50vh;
   overflow: auto;
 `;
 

@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import useForm from '../../hooks/use-form';
 import {
   actionsContainer,
@@ -13,8 +13,13 @@ import {
 } from '../../styles/form-style';
 import CartContext from '../../store/cart-context';
 import OrderButton from './OrderButton';
+import AddressInput from './AddressInput';
 
 const Form = (props) => {
+  const [zonecode, setZonecode] = useState('');
+  const [address, setAddress] = useState('');
+  const [detailedAddress, setDetailedAddress] =
+    useState('');
   const { totalPrice, resetCart } = useContext(CartContext);
   const total = `${totalPrice.toLocaleString('ko-KO')}원`;
 
@@ -65,16 +70,16 @@ const Form = (props) => {
     reset: tel3Reset,
   } = useForm(tel2RegEx);
 
-  const {
-    isRequired: addressIsRequired,
+  // const {
+  //   isRequired: addressIsRequired,
 
-    enteredValue: enteredAddress,
-    isValid: addressIsValid,
-    isInvalidUI: addressIsInvalidUI,
-    inputChangeHandler: addressChangeHandler,
-    inputBlurHandler: addressBlurHandler,
-    reset: addressReset,
-  } = useForm(addressRegEx);
+  //   enteredValue: enteredAddress,
+  //   isValid: addressIsValid,
+  //   isInvalidUI: addressIsInvalidUI,
+  //   inputChangeHandler: addressChangeHandler,
+  //   inputBlurHandler: addressBlurHandler,
+  //   reset: addressReset,
+  // } = useForm(addressRegEx);
 
   const {
     isRequired: memoIsRequired,
@@ -85,6 +90,14 @@ const Form = (props) => {
     inputBlurHandler: memoBlurHandler,
     reset: memoReset,
   } = useForm();
+
+  // let addressIsValid = false;
+  const addressIsValid = addressRegEx.test(detailedAddress);
+  const resetAddress = () => {
+    setZonecode('');
+    setAddress('');
+    setDetailedAddress('');
+  };
 
   let telIsValid = false;
   if (tel1IsValid && tel2IsValid && tel3IsValid) {
@@ -110,7 +123,8 @@ const Form = (props) => {
     const userData = {
       name: enteredName,
       tel: `${enteredTel1}-${enteredTel2}-${enteredTel3}`,
-      address: enteredAddress,
+      address: `${address} ${detailedAddress}`,
+      zonecode: zonecode,
       memo: enteredMemo,
     };
     props.onOrder(userData);
@@ -118,8 +132,8 @@ const Form = (props) => {
     tel1Reset();
     tel2Reset();
     tel3Reset();
-    addressReset();
     memoReset();
+    resetAddress();
     resetCart();
   };
 
@@ -141,6 +155,19 @@ const Form = (props) => {
             required={nameIsRequired}
           />
         </div>
+        <AddressInput
+          addressState={{
+            zonecode,
+            address,
+            detailedAddress,
+          }}
+          addressAction={{
+            setZonecode,
+            setAddress,
+            setDetailedAddress,
+          }}
+          addressIsValid={addressIsValid}
+        />
         <div css={inputContainer}>
           <strong css={labelStyle(tel1IsRequired)}>
             phone
@@ -183,7 +210,7 @@ const Form = (props) => {
             />
           </div>
         </div>
-        <div css={inputContainer}>
+        {/* <div css={inputContainer}>
           <strong css={labelStyle(addressIsRequired)}>
             address
           </strong>
@@ -196,7 +223,7 @@ const Form = (props) => {
             onBlur={addressBlurHandler}
             required={addressIsRequired}
           />
-        </div>
+        </div> */}
         <div css={inputContainer}>
           <strong css={labelStyle(memoIsRequired)}>
             delivery memo
