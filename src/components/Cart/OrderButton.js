@@ -6,7 +6,10 @@ import {
   wideBtn,
   orderBadgePosition,
 } from '../../styles/cart-style';
-import { noBorder } from '../../styles/form-style';
+import {
+  noBorder,
+  orderButton,
+} from '../../styles/form-style';
 
 const OrderButton = (props) => {
   const { totalAmount } = useContext(CartContext);
@@ -21,8 +24,12 @@ const OrderButton = (props) => {
         이전으로
       </button>
       <button
-        css={[button, wideBtn]}
-        // onClick={props.onOrder}
+        css={[
+          button,
+          wideBtn,
+          orderButton(props.formIsValid),
+        ]}
+        disabled={!props.formIsValid}
       >
         <span>총 주문하기</span>
         <span css={[badge, orderBadgePosition]}>

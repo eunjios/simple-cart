@@ -57,10 +57,12 @@ export const backdrop = css`
 export const modal = css`
   position: fixed;
   top: 15vh;
-  left: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 920px;
   width: 80%;
   background-color: #fff;
-  padding: 1rem;
+  padding: 16px;
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
@@ -81,11 +83,11 @@ export const modal = css`
   @keyframes slide-up {
     from {
       opacity: 0;
-      transform: translateY(1rem);
+      transform: translateX(-50%) translateY(1rem);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateX(-50%) translateY(0);
     }
   }
 `;

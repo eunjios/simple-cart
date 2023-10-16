@@ -1,8 +1,13 @@
 import { css } from '@emotion/react';
 
 export const formContainer = css`
-  overflow-y: auto;
   padding: 16px;
+  height: 100%;
+`;
+
+export const inputsContainer = css`
+  max-height: 40%;
+  overflow: auto;
 `;
 
 export const inputContainer = css`
@@ -36,9 +41,9 @@ export const labelStyle = (isRequired) => {
   return css(baseStyle);
 };
 
-export const inputStyle = css`
+export const inputStyle = (isInValid) => css`
   border-radius: 0;
-  border: 1.2px solid #ccc;
+  border: 1.2px solid ${isInValid ? '#c05850bf' : '#ccc'};
   height: 32px;
   padding: 4px 8px;
   outline: none;
@@ -79,5 +84,15 @@ export const noBorder = css`
   border: 1px solid transparent;
   &:hover {
     border: 1px solid transparent;
+  }
+`;
+
+export const orderButton = (formIsValid) => css`
+  cursor: ${formIsValid ? 'pointer' : 'not-allowed'};
+  opacity: ${formIsValid ? '1' : '0.3'};
+
+  &:hover {
+    background: ${formIsValid ? '' : 'transparent'};
+    color: ${formIsValid ? '' : '#c05850'};
   }
 `;
